@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('registration', [UserController::class, 'registration'])->name('register');
-Route::post('post-registration', [UserController::class, 'postRegistration'])->name('register.post');
+Route::get('registration', [UserController::class, 'create'])->name('create');
+Route::post('registration', [UserController::class, 'store'])->name('registration');
 
-Route::get('dashboard', [UserController::class, 'dashboard']);
+Route::middleware('auth')->get('dashboard', [UserController::class, 'dashboard']);

@@ -65,14 +65,11 @@
         }
     </style>
 
-    <!-- Custom styles for this template -->
-    <link href='resources/css/sign.css' rel="stylesheet">
-
 </head>
 <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
-    <form action="{{ route('register.post') }}" method="POST" id="handleAjax">
+    <form action="{{ route('registration') }}" method="POST" id="handleAjax">
         @csrf
         <img class="mb-4" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Please sign up</h1>

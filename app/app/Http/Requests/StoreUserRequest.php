@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreUserRequest extends FormRequest
 {
@@ -13,7 +12,7 @@ class StoreUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -23,10 +22,10 @@ class StoreUserRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
+            'name'  => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'unique:users'],
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:9', 'unique:users']
         ];
@@ -40,14 +39,14 @@ class StoreUserRequest extends FormRequest
         ]);
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
-            'name.required' => 'Name is required',
-            'email.required' => 'Email is required',
-            'phone.required' => 'Phone is required',
-            'email.unique' => 'The user with the specified email address is already registered',
-            'phone.unique' => 'The user with the specified phone is already registered',
+            'name.required'     => 'Name is required',
+            'email.required'    => 'Email is required',
+            'phone.required'    => 'Phone is required',
+            'email.unique'      => 'The user with the specified email address is already registered',
+            'phone.unique'      => 'The user with the specified phone is already registered',
         ];
     }
 }
